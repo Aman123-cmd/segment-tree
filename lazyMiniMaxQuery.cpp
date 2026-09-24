@@ -40,8 +40,8 @@ class SegmentTree{
 
     void propagate(int i,int l,int r,int val,vector<int>&lazy){
         if(lazy[i]!=0){
-            segTree[i].mini+=val;
-            segTree[i].maxi+=val;
+            segTree[i].mini+=lazy[i];
+            segTree[i].maxi+=lazy[i];
            if(l!=r){
             lazy[2*i+1]+=lazy[i];
             lazy[2*i+2]+=lazy[i];
