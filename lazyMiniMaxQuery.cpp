@@ -65,8 +65,12 @@ class SegmentTree{
         if(l>end || r<start) return;
         
         if(l>=start && r<=end){
-           lazy[i]+=val;
-           propagate(i,l,r,val,lazy);
+            segTree[i].mini+=val;
+            segTree[i].maxi+=val;
+           if(l!=r){
+            lazy[2*i+1]+=val;
+            lazy[2*i+2]+=val;
+           }
            return;
         }
 
@@ -110,7 +114,7 @@ int main(){
      int n = nums.size();
     SegmentTree st(nums);
     vector<int>lazy(4*n);
-    vector<vector<int>> queries = {{3,7,2},{1,4,4},{6,9,5},{7,9,2}};
+      vector<vector<int>> queries = {{3,7,2},{1,4,4},{6,9,5},{7,9,2}};
     vector<Node>result;
    for(auto &q:queries){
     int start = q[0];
